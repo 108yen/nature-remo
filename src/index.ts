@@ -14,6 +14,12 @@ async function main() {
   const isDaytime = date.hour() > 8 && date.hour() < 19
   const isDeviceConnected = await deviceIsConnectedLocalNetwork()
 
+  if (isDeviceConnected) {
+    log("Device is detected.", "DEBUG")
+  } else {
+    log("Device is not detected.", "DEBUG")
+  }
+
   const cloud = new Cloud(process.env.ACCESS_TOKEN as string)
 
   const response = await cloud.getDevices()
@@ -26,9 +32,13 @@ async function main() {
 }
 
 CronJob.from({
-  cronTime: "*/10 * * * * *",
+  cronTime: "0 */5 * * * *",
   onTick: () => {
-    main()
+    try {
+      main()
+    } catch (error) {
+      log(error as string, "ERROR")
+    }
   },
   start: true,
   timeZone: "Asia/Tokyo",
