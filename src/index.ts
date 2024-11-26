@@ -1,3 +1,4 @@
+import { CronJob } from "cron"
 import { config } from "dotenv"
 
 import { SIGNAL_ID } from "./constant"
@@ -19,4 +20,11 @@ async function main() {
   }
 }
 
-main()
+CronJob.from({
+  cronTime: "*/1 * * * * *",
+  onTick: () => {
+    main()
+  },
+  start: true,
+  timeZone: "Asia/Tokyo",
+})
