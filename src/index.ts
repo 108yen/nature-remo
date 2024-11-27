@@ -1,7 +1,7 @@
 import { CronJob } from "cron"
 import { config } from "dotenv"
 
-import { SIGNAL_ID } from "./constant"
+import { SIGNAL_ID, TRIGGER } from "./constant"
 import dayjs from "./dayjs"
 import { log } from "./logger"
 import { Cloud } from "./remoAPI"
@@ -25,7 +25,7 @@ async function main() {
   const response = await cloud.getDevices()
   const data = getEvents(response)
 
-  if (data.il.val < 100 && isDaytime && isDeviceConnected) {
+  if (data.il.val < TRIGGER.light && isDaytime && isDeviceConnected) {
     await cloud.sendSignal(SIGNAL_ID.toggle_light)
     log(`Toggle light. light: ${data.il.val}`, "INFO")
   }
