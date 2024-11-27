@@ -1,7 +1,7 @@
-import { SIGNAL_ID, TRIGGER } from "@/constant"
-import { log } from "@/logger"
-import { Props } from "@/models"
-import { store } from "@/store"
+import { SIGNAL_ID, TRIGGER } from "../constant"
+import { log } from "../logger"
+import { Props } from "../models"
+import { store } from "../store"
 
 export async function lightControl({
   cloud,
