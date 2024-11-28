@@ -8,7 +8,7 @@ export async function deviceIsConnectedLocalNetwork() {
     address: LOCAL_NETWORK.ip_range,
   })
 
-  return devices.some(({ mac }) => mac === LOCAL_NETWORK.mac)
+  return devices.some(({ mac }) => mac === process.env.MAC_ADDRESS)
 }
 
 export function getEvents(deviceEvents: DeviceWithEvents[]) {
