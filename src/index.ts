@@ -13,7 +13,7 @@ config({ path: ".env" })
 async function main() {
   const date = dayjs().tz()
   const daytime = date.hour() > 8 && date.hour() < 19
-  const midnight = date.hour() > 19 && date.hour() < 4
+  const midnight = date.hour() > 19 || date.hour() < 4
   const deviceConnected = await deviceIsConnectedLocalNetwork()
 
   if (deviceConnected) {
