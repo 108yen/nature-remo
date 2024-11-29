@@ -19,7 +19,7 @@ export async function lightControl({
     log(`Turn on light. brightness: ${data.il.val}`, "INFO")
   }
 
-  if (data.il.val > TRIGGER.light && midnight && deviceDisconnectCount > 5) {
+  if (data.il.val > TRIGGER.light && midnight && deviceDisconnectCount >= 5) {
     await cloud.sendSignal(SIGNAL_ID.toggle_light)
 
     store.set("light", 0)
@@ -43,9 +43,7 @@ export async function lightControl({
   if (!deviceConnected) {
     if (deviceDisconnectCount == -1) {
       store.set("deviceDisconnectCount", 0)
-    } else if (deviceDisconnectCount > 5) {
-      store.set("deviceDisconnectCount", 0)
-    } else {
+    } else if (deviceDisconnectCount < 5) {
       store.set("deviceDisconnectCount", deviceDisconnectCount + 1)
     }
   } else {
