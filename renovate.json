@@ -1,0 +1,12 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "dependencyDashboard": false,
+  "extends": ["config:recommended"],
+  "schedule": ["* 3-9 * * 0,6"],
+  "labels": ["dependencies"],
+  "rebaseWhen": "conflicted",
+  "timezone": "Asia/Tokyo",
+  "assignees": ["108yen"],
+  "prHourlyLimit": 10,
+  "automerge": true
+}
