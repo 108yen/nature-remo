@@ -107,4 +107,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run build
-        run: docker-compose build
+        run: docker compose build
