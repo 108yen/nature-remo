@@ -12,7 +12,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check --cache .",
     "format:write": "prettier --write --cache .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:signals": "tsx src/scripts/signals"
   },
   "keywords": [
     "nature-remo"
@@ -44,10 +45,10 @@
     "typescript-eslint": "^8.16.0"
   },
   "dependencies": {
+    "dotenv": "^16.4.7",
     "axios": "^1.7.8",
     "cron": "^3.2.1",
     "dayjs": "^1.11.13",
-    "dotenv": "^16.4.5",
     "local-devices": "^4.0.0"
   }
 }

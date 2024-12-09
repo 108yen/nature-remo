@@ -1,7 +1,7 @@
 import { CronJob } from "cron"
 import { config } from "dotenv"
 
-import { lightControl } from "./control"
+import { lightControl, tvControl } from "./control"
 import dayjs from "./dayjs"
 import { log } from "./logger"
 import { Props } from "./models"
@@ -37,6 +37,7 @@ async function main() {
   }
 
   await lightControl(props)
+  await tvControl(props)
 }
 
 CronJob.from({

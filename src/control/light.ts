@@ -1,4 +1,4 @@
-import { SIGNAL_ID, TRIGGER } from "../constant"
+import { SIGNAL, TRIGGER } from "../constant"
 import { log } from "../logger"
 import { Props } from "../models"
 import { store } from "../store"
@@ -13,14 +13,14 @@ export async function lightControl({
   const deviceDisconnectCount = store.get("deviceDisconnectCount") ?? -1
 
   if (data.il.val < TRIGGER.light && daytime && deviceConnected) {
-    await cloud.sendSignal(SIGNAL_ID.toggle_light)
+    await cloud.sendSignal(SIGNAL.light.id)
 
     store.set("light", 1)
     log(`Turn on light. brightness: ${data.il.val}`, "INFO")
   }
 
   if (data.il.val > TRIGGER.light && midnight && deviceDisconnectCount >= 5) {
-    await cloud.sendSignal(SIGNAL_ID.toggle_light)
+    await cloud.sendSignal(SIGNAL.light.id)
 
     store.set("light", 0)
     log(`Turn off light. brightness: ${data.il.val}`, "INFO")
