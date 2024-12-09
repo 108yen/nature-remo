@@ -43,7 +43,7 @@ export async function lightControl({
   if (!deviceConnected) {
     if (deviceDisconnectCount == -1) {
       store.set("deviceDisconnectCount", 0)
-    } else if (deviceDisconnectCount < 5) {
+    } else if (deviceDisconnectCount < TRIGGER.disconnectCount) {
       store.set("deviceDisconnectCount", deviceDisconnectCount + 1)
     }
   } else {

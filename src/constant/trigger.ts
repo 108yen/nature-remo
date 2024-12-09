@@ -1,3 +1,4 @@
 export const TRIGGER = {
-  light: 150,
+  disconnectCount: 8,
+  light: 170,
 }
