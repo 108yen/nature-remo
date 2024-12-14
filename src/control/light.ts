@@ -12,6 +12,16 @@ export async function lightControl({
 }: Props) {
   const deviceDisconnectCount = store.get("deviceDisconnectCount") ?? -1
 
+  if (!deviceConnected) {
+    if (deviceDisconnectCount == -1) {
+      store.set("deviceDisconnectCount", 0)
+    } else if (deviceDisconnectCount < TRIGGER.disconnectCount) {
+      store.set("deviceDisconnectCount", deviceDisconnectCount + 1)
+    }
+  } else {
+    store.set("deviceDisconnectCount", 0)
+  }
+
   if (data.il.val < TRIGGER.light && daytime && deviceConnected) {
     await cloud.sendSignal(SIGNAL.light.id)
 
@@ -19,7 +29,7 @@ export async function lightControl({
     log(`Turn on light. brightness: ${data.il.val}`, "INFO")
   }
 
-  if (data.il.val > TRIGGER.light && midnight && deviceDisconnectCount >= 5) {
+  if (data.il.val > TRIGGER.light && midnight && deviceDisconnectCount >= TRIGGER.disconnectCount) {
     await cloud.sendSignal(SIGNAL.light.id)
 
     store.set("light", 0)
@@ -38,15 +48,5 @@ export async function lightControl({
       `Update the light parameter to 1 because the light is expected to be on. brightness: ${data.il.val}`,
       "DEBUG",
     )
-  }
-
-  if (!deviceConnected) {
-    if (deviceDisconnectCount == -1) {
-      store.set("deviceDisconnectCount", 0)
-    } else if (deviceDisconnectCount < TRIGGER.disconnectCount) {
-      store.set("deviceDisconnectCount", deviceDisconnectCount + 1)
-    }
-  } else {
-    store.set("deviceDisconnectCount", 0)
   }
 }
