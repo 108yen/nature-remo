@@ -47,7 +47,7 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "axios": "^1.7.8",
-    "cron": "^3.2.1",
+    "cron": "^4.0.0",
     "dayjs": "^1.11.13",
     "local-devices": "^4.0.0"
   }
