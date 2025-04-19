@@ -13,7 +13,7 @@ importers:
         version: 1.8.4
       cron:
         specifier: ^4.0.0
-        version: 4.1.4
+        version: 4.3.0
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
@@ -934,8 +934,8 @@ packages:
   create-require@1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
 
-  cron@4.1.4:
-    resolution: {integrity: sha512-PpAGyOyWZuGT3I50iGKeyZzNsDn/hp2AzRGUzXIlmnwC+bHZFTs1itnQKx171FeocEej+zTYV2JIgQM8M46LaQ==}
+  cron@4.3.0:
+    resolution: {integrity: sha512-ciiYNLfSlF9MrDqnbMdRWFiA6oizSF7kA1osPP9lRzNu0Uu+AWog1UKy7SkckiDY2irrNjeO6qLyKnXC8oxmrw==}
     engines: {node: '>=18.x'}
 
   cross-spawn@7.0.6:
@@ -3328,7 +3328,7 @@ snapshots:
 
   create-require@1.1.1: {}
 
-  cron@4.1.4:
+  cron@4.3.0:
     dependencies:
       '@types/luxon': 3.6.2
       luxon: 3.6.1
