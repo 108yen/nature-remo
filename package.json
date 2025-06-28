@@ -45,7 +45,7 @@
     "typescript-eslint": "^8.16.0"
   },
   "dependencies": {
-    "dotenv": "^16.4.7",
+    "dotenv": "^17.0.0",
     "axios": "^1.7.8",
     "cron": "^4.0.0",
     "dayjs": "^1.11.13",
